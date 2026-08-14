@@ -24,8 +24,8 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=DM+Sans:wght@400;500;700&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=DM+Sans:wght@400;500;700&display=swap"></noscript>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap"></noscript>
 
 <script type="application/ld+json">
 {
@@ -101,18 +101,19 @@
 </script>
 <style>
   :root{
-    --cream:#FBF4E9;
-    --cream-2:#F3E6D2;
-    --paper:#FFFDF9;
-    --ink:#2B2118;
-    --ink-soft:#5C4E3E;
-    --terracotta:#C7592A;
-    --terracotta-dark:#A3461D;
-    --forest:#26362B;
-    --forest-light:#3C5644;
-    --gold:#DDA24E;
-    --border:#E6D6BA;
-    --shadow: 0 18px 40px -20px rgba(43,33,24,0.35);
+    --cream:#F3EFE7;
+    --cream-2:#EAE3D2;
+    --paper:#FFFFFF;
+    --ink:#1B1712;
+    --ink-soft:#54493C;
+    --terracotta:#C23B2E;
+    --terracotta-dark:#9C2E22;
+    --forest:#17130F;
+    --forest-light:#262019;
+    --gold:#C23B2E;
+    --star:#E8B33D;
+    --border:#DFD6BE;
+    --shadow: 0 18px 40px -20px rgba(23,19,15,0.4);
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -126,7 +127,7 @@
   }
   img,svg{max-width:100%;display:block;}
   h1,h2,h3{
-    font-family:'Fraunces', serif;
+    font-family:'Poppins', sans-serif;
     color:var(--forest);
     margin:0 0 .5em;
     line-height:1.12;
@@ -165,18 +166,18 @@
   /* ---------- Header ---------- */
   .site-header{
     position:sticky;top:0;z-index:40;
-    background:rgba(251,244,233,0.92);
+    background:rgba(23,19,15,0.96);
     backdrop-filter:blur(8px);
-    border-bottom:1px solid var(--border);
+    border-bottom:1px solid rgba(255,255,255,0.08);
   }
   .header-inner{
     display:flex;align-items:center;justify-content:space-between;
     padding:16px 24px;gap:16px;
   }
-  .logo{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-weight:700;font-size:1.25rem;color:var(--forest);}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Poppins',sans-serif;font-weight:700;font-size:1.25rem;color:var(--cream);}
   .logo svg{width:34px;height:34px;flex-shrink:0;}
-  .header-trust{display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--ink-soft);font-weight:500;}
-  .stars{color:var(--gold);letter-spacing:1px;}
+  .header-trust{display:flex;align-items:center;gap:8px;font-size:.85rem;color:#C9C2B4;font-weight:500;}
+  .stars{color:var(--star);letter-spacing:1px;}
   @media (max-width:640px){ .header-trust span.long{display:none;} }
 
   /* ---------- Hero ---------- */
@@ -237,7 +238,7 @@
   /* ---------- Trust / reviews ---------- */
   .trust{background:var(--cream-2);}
   .trust-top{text-align:center;margin-bottom:40px;}
-  .trust-score{font-family:'Fraunces',serif;font-size:3rem;color:var(--forest);font-weight:700;}
+  .trust-score{font-family:'Poppins',sans-serif;font-size:3rem;color:var(--forest);font-weight:700;}
   .trust-count{color:var(--ink-soft);font-size:.9rem;}
   .review-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:900px;margin:0 auto;}
   @media (max-width:720px){ .review-grid{grid-template-columns:1fr;} }
@@ -246,7 +247,7 @@
     padding:26px;
   }
   .review-card .stars{display:block;margin-bottom:10px;font-size:1rem;}
-  .review-card h4{margin:0 0 8px;font-family:'Fraunces',serif;font-size:1.05rem;color:var(--forest);}
+  .review-card h4{margin:0 0 8px;font-family:'Poppins',sans-serif;font-size:1.05rem;color:var(--forest);}
   .review-card p{color:var(--ink-soft);font-size:.94rem;margin:0 0 12px;}
   .review-card .who{font-size:.82rem;color:var(--ink-soft);font-weight:500;}
   .review-card .who b{color:var(--ink);}
@@ -265,7 +266,7 @@
     width:54px;height:54px;border-radius:50%;
     background:var(--terracotta);color:var(--paper);
     display:flex;align-items:center;justify-content:center;
-    font-family:'Fraunces',serif;font-weight:700;font-size:1.3rem;
+    font-family:'Poppins',sans-serif;font-weight:700;font-size:1.3rem;
     margin:0 auto 18px;
     box-shadow:0 10px 22px -10px rgba(199,89,42,0.6);
   }
@@ -285,7 +286,7 @@
     display:flex;align-items:center;justify-content:center;margin-top:2px;
   }
   .check svg{width:14px;height:14px;}
-  .benefits li h4{margin:0 0 4px;font-size:1.03rem;color:var(--forest);font-family:'Fraunces',serif;}
+  .benefits li h4{margin:0 0 4px;font-size:1.03rem;color:var(--forest);font-family:'Poppins',sans-serif;}
   .benefits li p{margin:0;color:var(--ink-soft);font-size:.94rem;}
   .spec-strip{
     display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;
@@ -306,7 +307,7 @@
   .faq-q{
     width:100%;text-align:left;background:none;border:none;cursor:pointer;
     padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;
-    font-family:'Fraunces',serif;font-size:1.02rem;color:var(--forest);font-weight:600;
+    font-family:'Poppins',sans-serif;font-size:1.02rem;color:var(--forest);font-weight:600;
   }
   .faq-q h3{font:inherit;margin:0;color:inherit;}
   .faq-q .plus{
@@ -348,7 +349,7 @@
   <div class="wrap header-inner">
     <div class="logo">
       <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="20" r="20" fill="#C7592A"/>
+        <circle cx="20" cy="20" r="20" fill="#C23B2E"/>
         <ellipse cx="20" cy="25" rx="8" ry="6.5" fill="#FBF4E9"/>
         <ellipse cx="12.5" cy="15" rx="3.2" ry="4" fill="#FBF4E9"/>
         <ellipse cx="27.5" cy="15" rx="3.2" ry="4" fill="#FBF4E9"/>
@@ -381,8 +382,8 @@
       <svg viewBox="0 0 480 380" width="480" height="380" xmlns="http://www.w3.org/2000/svg">
         <!-- treadmill frame -->
         <g>
-          <rect x="70" y="230" width="330" height="52" rx="26" fill="#3C5644"/>
-          <rect x="86" y="238" width="298" height="36" rx="18" fill="#26362B"/>
+          <rect x="70" y="230" width="330" height="52" rx="26" fill="#262019"/>
+          <rect x="86" y="238" width="298" height="36" rx="18" fill="#17130F"/>
           <g stroke="#4E6B57" stroke-width="4" stroke-linecap="round">
             <line x1="100" y1="256" x2="115" y2="256"/>
             <line x1="125" y1="256" x2="140" y2="256"/>
@@ -396,42 +397,42 @@
             <line x1="325" y1="256" x2="340" y2="256"/>
             <line x1="350" y1="256" x2="365" y2="256"/>
           </g>
-          <circle cx="80" cy="282" r="20" fill="#26362B"/>
-          <circle cx="390" cy="282" r="20" fill="#26362B"/>
-          <circle cx="80" cy="282" r="7" fill="#DDA24E"/>
-          <circle cx="390" cy="282" r="7" fill="#DDA24E"/>
+          <circle cx="80" cy="282" r="20" fill="#17130F"/>
+          <circle cx="390" cy="282" r="20" fill="#17130F"/>
+          <circle cx="80" cy="282" r="7" fill="#C23B2E"/>
+          <circle cx="390" cy="282" r="7" fill="#C23B2E"/>
           <!-- rear posts + chain -->
-          <rect x="330" y="140" width="10" height="100" rx="5" fill="#3C5644"/>
-          <rect x="380" y="150" width="10" height="90" rx="5" fill="#3C5644"/>
-          <rect x="325" y="136" width="70" height="10" rx="5" fill="#3C5644"/>
-          <path d="M360 146 v14 M356 160 h8 M356 170 h8 M360 174 v14" stroke="#DDA24E" stroke-width="3" stroke-linecap="round"/>
+          <rect x="330" y="140" width="10" height="100" rx="5" fill="#262019"/>
+          <rect x="380" y="150" width="10" height="90" rx="5" fill="#262019"/>
+          <rect x="325" y="136" width="70" height="10" rx="5" fill="#262019"/>
+          <path d="M360 146 v14 M356 160 h8 M356 170 h8 M360 174 v14" stroke="#C23B2E" stroke-width="3" stroke-linecap="round"/>
           <!-- front handlebar -->
-          <path d="M96 236 C96 190 96 170 130 168" fill="none" stroke="#3C5644" stroke-width="10" stroke-linecap="round"/>
-          <path d="M170 236 C170 190 170 168 130 168" fill="none" stroke="#3C5644" stroke-width="10" stroke-linecap="round"/>
+          <path d="M96 236 C96 190 96 170 130 168" fill="none" stroke="#262019" stroke-width="10" stroke-linecap="round"/>
+          <path d="M170 236 C170 190 170 168 130 168" fill="none" stroke="#262019" stroke-width="10" stroke-linecap="round"/>
         </g>
         <!-- dog silhouette running -->
         <g transform="translate(190,150)">
-          <ellipse cx="40" cy="55" rx="46" ry="24" fill="#26362B"/>
+          <ellipse cx="40" cy="55" rx="46" ry="24" fill="#17130F"/>
           <ellipse cx="8" cy="60" rx="20" ry="16" fill="#FBF4E9"/>
-          <circle cx="72" cy="30" r="19" fill="#26362B"/>
-          <path d="M60 16 L52 -2 L68 8 Z" fill="#26362B"/>
-          <path d="M84 16 L96 0 L86 12 Z" fill="#26362B"/>
+          <circle cx="72" cy="30" r="19" fill="#17130F"/>
+          <path d="M60 16 L52 -2 L68 8 Z" fill="#17130F"/>
+          <path d="M84 16 L96 0 L86 12 Z" fill="#17130F"/>
           <ellipse cx="80" cy="34" rx="5" ry="4" fill="#FBF4E9"/>
-          <circle cx="82" cy="33" r="1.6" fill="#26362B"/>
-          <path d="M-6 40 C -22 30 -30 12 -22 -2" fill="none" stroke="#26362B" stroke-width="9" stroke-linecap="round"/>
-          <path d="M14 78 L2 100" stroke="#26362B" stroke-width="9" stroke-linecap="round"/>
+          <circle cx="82" cy="33" r="1.6" fill="#17130F"/>
+          <path d="M-6 40 C -22 30 -30 12 -22 -2" fill="none" stroke="#17130F" stroke-width="9" stroke-linecap="round"/>
+          <path d="M14 78 L2 100" stroke="#17130F" stroke-width="9" stroke-linecap="round"/>
           <path d="M30 82 L38 106" stroke="#FBF4E9" stroke-width="9" stroke-linecap="round"/>
-          <path d="M56 80 L48 104" stroke="#26362B" stroke-width="9" stroke-linecap="round"/>
+          <path d="M56 80 L48 104" stroke="#17130F" stroke-width="9" stroke-linecap="round"/>
           <path d="M70 78 L82 100" stroke="#FBF4E9" stroke-width="9" stroke-linecap="round"/>
         </g>
         <!-- paw prints trailing -->
-        <g fill="#DDA24E" opacity="0.7">
+        <g fill="#C23B2E" opacity="0.7">
           <circle cx="420" cy="120" r="5"/>
           <circle cx="432" cy="108" r="3.4"/>
           <circle cx="410" cy="106" r="3.4"/>
           <circle cx="444" cy="120" r="3"/>
         </g>
-        <g fill="#DDA24E" opacity="0.45">
+        <g fill="#C23B2E" opacity="0.45">
           <circle cx="450" cy="160" r="4.2"/>
           <circle cx="460" cy="150" r="2.8"/>
           <circle cx="441" cy="149" r="2.8"/>
@@ -450,17 +451,17 @@
     </div>
     <div class="grid-3">
       <div class="p-card">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#DDA24E" stroke-width="1.8"><path d="M4 14a4 4 0 0 1 0-8 5.5 5.5 0 0 1 10.6-1.5A4.5 4.5 0 0 1 20 9a3.5 3.5 0 0 1-1 6.9H6"/><path d="M8 18l-1 3M12 18l-1 3M16 18l-1 3"/></svg>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#C23B2E" stroke-width="1.8"><path d="M4 14a4 4 0 0 1 0-8 5.5 5.5 0 0 1 10.6-1.5A4.5 4.5 0 0 1 20 9a3.5 3.5 0 0 1-1 6.9H6"/><path d="M8 18l-1 3M12 18l-1 3M16 18l-1 3"/></svg>
         <h3>Días de lluvia o calor extremo</h3>
         <p>El clima no siempre acompaña, y el paseo diario se cancela justo cuando tu perro más lo necesita.</p>
       </div>
       <div class="p-card">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#DDA24E" stroke-width="1.8"><path d="M12 2v6M12 22v-6M4.9 4.9l4.2 4.2M14.9 14.9l4.2 4.2M2 12h6M16 12h6M4.9 19.1l4.2-4.2M14.9 9.1l4.2-4.2"/></svg>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#C23B2E" stroke-width="1.8"><path d="M12 2v6M12 22v-6M4.9 4.9l4.2 4.2M14.9 14.9l4.2 4.2M2 12h6M16 12h6M4.9 19.1l4.2-4.2M14.9 9.1l4.2-4.2"/></svg>
         <h3>Perros con demasiada energía</h3>
         <p>Sin suficiente ejercicio aparecen la ansiedad, los destrozos en casa y el ladrido excesivo.</p>
       </div>
       <div class="p-card">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#DDA24E" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#C23B2E" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
         <h3>Rutinas sin tiempo de sobra</h3>
         <p>Entre el trabajo y el día a día, no siempre queda tiempo para el paseo largo que tu perro pide.</p>
       </div>
@@ -552,27 +553,27 @@
     <div class="benefits-art">
       <svg viewBox="0 0 380 340" width="380" height="340" xmlns="http://www.w3.org/2000/svg">
         <rect x="20" y="20" width="340" height="300" rx="28" fill="#F3E6D2"/>
-        <rect x="60" y="190" width="260" height="46" rx="23" fill="#3C5644"/>
-        <rect x="74" y="198" width="232" height="30" rx="15" fill="#26362B"/>
-        <circle cx="70" cy="236" r="17" fill="#26362B"/>
-        <circle cx="310" cy="236" r="17" fill="#26362B"/>
-        <circle cx="70" cy="236" r="5.5" fill="#DDA24E"/>
-        <circle cx="310" cy="236" r="5.5" fill="#DDA24E"/>
-        <rect x="266" y="90" width="8" height="90" rx="4" fill="#3C5644"/>
-        <rect x="300" y="98" width="8" height="82" rx="4" fill="#3C5644"/>
-        <rect x="262" y="86" width="52" height="8" rx="4" fill="#3C5644"/>
-        <path d="M288 96 v10 M284 108 h8 M284 116 h8 M288 120 v10" stroke="#DDA24E" stroke-width="2.6" stroke-linecap="round"/>
+        <rect x="60" y="190" width="260" height="46" rx="23" fill="#262019"/>
+        <rect x="74" y="198" width="232" height="30" rx="15" fill="#17130F"/>
+        <circle cx="70" cy="236" r="17" fill="#17130F"/>
+        <circle cx="310" cy="236" r="17" fill="#17130F"/>
+        <circle cx="70" cy="236" r="5.5" fill="#C23B2E"/>
+        <circle cx="310" cy="236" r="5.5" fill="#C23B2E"/>
+        <rect x="266" y="90" width="8" height="90" rx="4" fill="#262019"/>
+        <rect x="300" y="98" width="8" height="82" rx="4" fill="#262019"/>
+        <rect x="262" y="86" width="52" height="8" rx="4" fill="#262019"/>
+        <path d="M288 96 v10 M284 108 h8 M284 116 h8 M288 120 v10" stroke="#C23B2E" stroke-width="2.6" stroke-linecap="round"/>
         <g transform="translate(110,110)">
-          <ellipse cx="36" cy="50" rx="42" ry="22" fill="#26362B"/>
+          <ellipse cx="36" cy="50" rx="42" ry="22" fill="#17130F"/>
           <ellipse cx="6" cy="54" rx="18" ry="14" fill="#FBF4E9"/>
-          <circle cx="66" cy="26" r="17" fill="#26362B"/>
-          <path d="M56 12 L48 -4 L64 6 Z" fill="#26362B"/>
-          <path d="M76 12 L88 -2 L78 8 Z" fill="#26362B"/>
+          <circle cx="66" cy="26" r="17" fill="#17130F"/>
+          <path d="M56 12 L48 -4 L64 6 Z" fill="#17130F"/>
+          <path d="M76 12 L88 -2 L78 8 Z" fill="#17130F"/>
           <ellipse cx="74" cy="30" rx="4.5" ry="3.6" fill="#FBF4E9"/>
-          <circle cx="76" cy="29" r="1.4" fill="#26362B"/>
-          <path d="M-4 36 C -18 26 -26 10 -20 -2" fill="none" stroke="#26362B" stroke-width="8" stroke-linecap="round"/>
+          <circle cx="76" cy="29" r="1.4" fill="#17130F"/>
+          <path d="M-4 36 C -18 26 -26 10 -20 -2" fill="none" stroke="#17130F" stroke-width="8" stroke-linecap="round"/>
         </g>
-        <g fill="#C7592A" opacity="0.55">
+        <g fill="#C23B2E" opacity="0.55">
           <circle cx="60" cy="270" r="4.5"/>
           <circle cx="72" cy="260" r="3"/>
           <circle cx="50" cy="258" r="3"/>
@@ -661,7 +662,7 @@
   <div class="wrap footer-inner">
     <div class="logo" style="font-size:1.05rem;">
       <svg viewBox="0 0 40 40" width="26" height="26" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="20" r="20" fill="#C7592A"/>
+        <circle cx="20" cy="20" r="20" fill="#C23B2E"/>
         <ellipse cx="20" cy="25" rx="8" ry="6.5" fill="#FBF4E9"/>
         <ellipse cx="12.5" cy="15" rx="3.2" ry="4" fill="#FBF4E9"/>
         <ellipse cx="27.5" cy="15" rx="3.2" ry="4" fill="#FBF4E9"/>
