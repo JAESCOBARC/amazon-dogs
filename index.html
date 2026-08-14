@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PatasActivas — Cinta de correr para perros</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF4E9;
+    --cream-2:#F3E6D2;
+    --paper:#FFFDF9;
+    --ink:#2B2118;
+    --ink-soft:#5C4E3E;
+    --terracotta:#C7592A;
+    --terracotta-dark:#A3461D;
+    --forest:#26362B;
+    --forest-light:#3C5644;
+    --gold:#DDA24E;
+    --border:#E6D6BA;
+    --shadow: 0 18px 40px -20px rgba(43,33,24,0.35);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'DM Sans', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%;display:block;}
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    color:var(--forest);
+    margin:0 0 .5em;
+    line-height:1.12;
+    letter-spacing:-0.01em;
+  }
+  p{margin:0 0 1em;}
+  a{color:inherit;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--terracotta-dark);
+    background:rgba(199,89,42,0.1);
+    padding:6px 14px;border-radius:100px;
+    margin-bottom:16px;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:'DM Sans',sans-serif;font-weight:700;font-size:1.02rem;
+    padding:16px 30px;border-radius:100px;
+    text-decoration:none;border:2px solid transparent;
+    cursor:pointer;transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background:var(--terracotta);color:var(--paper);
+    box-shadow:0 14px 30px -12px rgba(199,89,42,0.55);
+  }
+  .btn-primary:hover{background:var(--terracotta-dark);transform:translateY(-2px);}
+  .btn-outline{
+    background:transparent;border-color:var(--forest);color:var(--forest);
+  }
+  .btn-outline:hover{background:var(--forest);color:var(--cream);}
+  .btn-block{width:100%;justify-content:center;}
+
+  /* ---------- Header ---------- */
+  .site-header{
+    position:sticky;top:0;z-index:40;
+    background:rgba(251,244,233,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);
+  }
+  .header-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 24px;gap:16px;
+  }
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-weight:700;font-size:1.25rem;color:var(--forest);}
+  .logo svg{width:34px;height:34px;flex-shrink:0;}
+  .header-trust{display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--ink-soft);font-weight:500;}
+  .stars{color:var(--gold);letter-spacing:1px;}
+  @media (max-width:640px){ .header-trust span.long{display:none;} }
+
+  /* ---------- Hero ---------- */
+  .hero{padding:64px 0 40px;overflow:hidden;position:relative;}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;}
+  @media (max-width:900px){ .hero-grid{grid-template-columns:1fr;gap:40px;} .hero{padding-top:40px;} }
+  .hero h1{font-size:clamp(2rem,4.2vw,2.85rem);}
+  .hero .lead{font-size:1.08rem;color:var(--ink-soft);max-width:46ch;}
+  .hero-trust{margin-top:16px;font-size:.92rem;color:var(--ink-soft);}
+  .hero-trust strong{color:var(--forest);}
+  .hero-art{position:relative;}
+  .blob{
+    position:absolute;inset:-8% -6%;
+    background:var(--cream-2);
+    border-radius:44% 56% 62% 38% / 48% 40% 60% 52%;
+    z-index:0;
+  }
+  .hero-art svg{position:relative;z-index:1;}
+
+  /* ---------- Section shells ---------- */
+  section{padding:72px 0;}
+  .section-head{max-width:640px;margin:0 auto 44px;text-align:center;}
+  .section-head h2{font-size:clamp(1.6rem,2.6vw,2.15rem);}
+  .section-head p{color:var(--ink-soft);}
+  .tag-center{display:block;text-align:center;margin-left:auto;margin-right:auto;width:fit-content;}
+
+  .problem{background:var(--forest);color:var(--cream);}
+  .problem h2{color:var(--cream);}
+  .problem .section-head p{color:#C9D3C9;}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  @media (max-width:820px){ .grid-3{grid-template-columns:1fr;} }
+  .p-card{
+    background:var(--forest-light);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:20px;padding:28px 26px;
+  }
+  .p-card .icon{width:46px;height:46px;margin-bottom:16px;}
+  .p-card h3{color:var(--cream);font-size:1.15rem;margin-bottom:8px;}
+  .p-card p{color:#C9D3C9;margin:0;font-size:.96rem;}
+
+  .solution .grid-3{gap:28px;}
+  .s-card{
+    background:var(--paper);
+    border:1px solid var(--border);
+    border-radius:20px;padding:30px 26px;
+    box-shadow:var(--shadow);
+  }
+  .s-card .icon{
+    width:52px;height:52px;border-radius:14px;
+    background:rgba(199,89,42,0.12);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:18px;
+  }
+  .s-card .icon svg{width:26px;height:26px;color:var(--terracotta);}
+  .s-card h3{font-size:1.12rem;margin-bottom:8px;}
+  .s-card p{color:var(--ink-soft);font-size:.96rem;margin:0;}
+
+  /* ---------- Trust / reviews ---------- */
+  .trust{background:var(--cream-2);}
+  .trust-top{text-align:center;margin-bottom:40px;}
+  .trust-score{font-family:'Fraunces',serif;font-size:3rem;color:var(--forest);font-weight:700;}
+  .trust-count{color:var(--ink-soft);font-size:.9rem;}
+  .review-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:900px;margin:0 auto;}
+  @media (max-width:720px){ .review-grid{grid-template-columns:1fr;} }
+  .review-card{
+    background:var(--paper);border:1px solid var(--border);border-radius:18px;
+    padding:26px;
+  }
+  .review-card .stars{display:block;margin-bottom:10px;font-size:1rem;}
+  .review-card h4{margin:0 0 8px;font-family:'Fraunces',serif;font-size:1.05rem;color:var(--forest);}
+  .review-card p{color:var(--ink-soft);font-size:.94rem;margin:0 0 12px;}
+  .review-card .who{font-size:.82rem;color:var(--ink-soft);font-weight:500;}
+  .review-card .who b{color:var(--ink);}
+  .verified{
+    display:inline-flex;align-items:center;gap:5px;
+    font-size:.72rem;font-weight:700;color:var(--forest);
+    background:rgba(38,54,43,0.08);padding:3px 10px;border-radius:100px;
+    margin-left:8px;
+  }
+
+  /* ---------- How it works ---------- */
+  .how-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative;max-width:960px;margin:0 auto;}
+  @media (max-width:820px){ .how-steps{grid-template-columns:1fr;gap:36px;} }
+  .how-step{position:relative;text-align:center;padding:0 20px;}
+  .how-num{
+    width:54px;height:54px;border-radius:50%;
+    background:var(--terracotta);color:var(--paper);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif;font-weight:700;font-size:1.3rem;
+    margin:0 auto 18px;
+    box-shadow:0 10px 22px -10px rgba(199,89,42,0.6);
+  }
+  .how-step h3{font-size:1.05rem;margin-bottom:8px;}
+  .how-step p{color:var(--ink-soft);font-size:.92rem;}
+  .how-arrow{position:absolute;top:26px;right:-8%;width:16%;color:var(--gold);}
+  @media (max-width:820px){ .how-arrow{display:none;} }
+
+  /* ---------- Benefits ---------- */
+  .benefits-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center;}
+  @media (max-width:900px){ .benefits-grid{grid-template-columns:1fr;} }
+  .benefits ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:20px;}
+  .benefits li{display:flex;gap:14px;align-items:flex-start;}
+  .check{
+    flex-shrink:0;width:28px;height:28px;border-radius:50%;
+    background:var(--forest);color:var(--cream);
+    display:flex;align-items:center;justify-content:center;margin-top:2px;
+  }
+  .check svg{width:14px;height:14px;}
+  .benefits li h4{margin:0 0 4px;font-size:1.03rem;color:var(--forest);font-family:'Fraunces',serif;}
+  .benefits li p{margin:0;color:var(--ink-soft);font-size:.94rem;}
+  .spec-strip{
+    display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;
+  }
+  .spec-chip{
+    font-size:.78rem;font-weight:600;color:var(--ink-soft);
+    background:var(--cream-2);border:1px solid var(--border);
+    padding:6px 12px;border-radius:100px;
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq{background:var(--cream-2);}
+  .faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:14px;}
+  .faq-item{
+    background:var(--paper);border:1px solid var(--border);border-radius:16px;
+    overflow:hidden;
+  }
+  .faq-q{
+    width:100%;text-align:left;background:none;border:none;cursor:pointer;
+    padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;
+    font-family:'Fraunces',serif;font-size:1.02rem;color:var(--forest);font-weight:600;
+  }
+  .faq-q .plus{
+    flex-shrink:0;width:26px;height:26px;border-radius:50%;
+    border:1.5px solid var(--terracotta);color:var(--terracotta);
+    display:flex;align-items:center;justify-content:center;font-size:1.1rem;
+    transition:transform .2s ease;
+  }
+  .faq-item.open .faq-q .plus{transform:rotate(45deg);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease;}
+  .faq-a p{padding:0 24px 20px;color:var(--ink-soft);font-size:.95rem;margin:0;}
+
+  /* ---------- CTA final ---------- */
+  .cta-final{
+    background:var(--forest);color:var(--cream);text-align:center;
+    border-radius:32px;max-width:1120px;margin:0 auto;padding:64px 32px;
+  }
+  .cta-final h2{color:var(--cream);font-size:clamp(1.6rem,3vw,2.2rem);}
+  .cta-final p.sub{color:#C9D3C9;max-width:50ch;margin:0 auto 28px;}
+  .friction{margin-top:16px;font-size:.85rem;color:#AEB9AE;}
+
+  /* ---------- Footer ---------- */
+  footer{border-top:1px solid var(--border);padding:44px 0 28px;}
+  .footer-inner{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-start;}
+  .footer-links{display:flex;gap:22px;flex-wrap:wrap;font-size:.88rem;color:var(--ink-soft);}
+  .footer-links a{text-decoration:none;}
+  .footer-links a:hover{color:var(--terracotta);}
+  .disclosure{
+    max-width:1120px;margin:24px auto 0;padding:0 24px;
+    font-size:.78rem;color:var(--ink-soft);line-height:1.6;
+  }
+  .paw-divider{display:flex;justify-content:center;gap:18px;opacity:.35;margin:0 0 28px;}
+  .paw-divider svg{width:16px;height:16px;color:var(--terracotta);}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <div class="logo">
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="20" fill="#C7592A"/>
+        <ellipse cx="20" cy="25" rx="8" ry="6.5" fill="#FBF4E9"/>
+        <ellipse cx="12.5" cy="15" rx="3.2" ry="4" fill="#FBF4E9"/>
+        <ellipse cx="27.5" cy="15" rx="3.2" ry="4" fill="#FBF4E9"/>
+        <ellipse cx="16.5" cy="10.5" rx="2.6" ry="3.4" fill="#FBF4E9"/>
+        <ellipse cx="23.5" cy="10.5" rx="2.6" ry="3.4" fill="#FBF4E9"/>
+      </svg>
+      PatasActivas
+    </div>
+    <div class="header-trust">
+      <span class="stars">★★★★★</span>
+      <span>5/5 <span class="long">· disponible en Amazon</span></span>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">🐾 Cinta de correr para perros</span>
+      <h1>¿Tu perro tiene demasiada energía y no sabes cómo liberarla?</h1>
+      <p class="lead">La cinta autopropulsada para perros medianos y grandes: sin electricidad, silenciosa y con freno manual, para que corra en casa los días de lluvia, calor extremo o cuando no llegas a un paseo largo.</p>
+      <a href="https://amzn.to/460T2lH" target="_blank" rel="noopener sponsored" class="btn btn-primary">
+        Ver precio en Amazon
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+      </a>
+      <p class="hero-trust"><strong>★★★★★ 5/5</strong> · Apta para Golden Retriever, Labrador, Husky, Border Collie y otras razas medianas/grandes</p>
+    </div>
+    <div class="hero-art">
+      <div class="blob"></div>
+      <svg viewBox="0 0 480 380" xmlns="http://www.w3.org/2000/svg">
+        <!-- treadmill frame -->
+        <g>
+          <rect x="70" y="230" width="330" height="52" rx="26" fill="#3C5644"/>
+          <rect x="86" y="238" width="298" height="36" rx="18" fill="#26362B"/>
+          <g stroke="#4E6B57" stroke-width="4" stroke-linecap="round">
+            <line x1="100" y1="256" x2="115" y2="256"/>
+            <line x1="125" y1="256" x2="140" y2="256"/>
+            <line x1="150" y1="256" x2="165" y2="256"/>
+            <line x1="175" y1="256" x2="190" y2="256"/>
+            <line x1="200" y1="256" x2="215" y2="256"/>
+            <line x1="225" y1="256" x2="240" y2="256"/>
+            <line x1="250" y1="256" x2="265" y2="256"/>
+            <line x1="275" y1="256" x2="290" y2="256"/>
+            <line x1="300" y1="256" x2="315" y2="256"/>
+            <line x1="325" y1="256" x2="340" y2="256"/>
+            <line x1="350" y1="256" x2="365" y2="256"/>
+          </g>
+          <circle cx="80" cy="282" r="20" fill="#26362B"/>
+          <circle cx="390" cy="282" r="20" fill="#26362B"/>
+          <circle cx="80" cy="282" r="7" fill="#DDA24E"/>
+          <circle cx="390" cy="282" r="7" fill="#DDA24E"/>
+          <!-- rear posts + chain -->
+          <rect x="330" y="140" width="10" height="100" rx="5" fill="#3C5644"/>
+          <rect x="380" y="150" width="10" height="90" rx="5" fill="#3C5644"/>
+          <rect x="325" y="136" width="70" height="10" rx="5" fill="#3C5644"/>
+          <path d="M360 146 v14 M356 160 h8 M356 170 h8 M360 174 v14" stroke="#DDA24E" stroke-width="3" stroke-linecap="round"/>
+          <!-- front handlebar -->
+          <path d="M96 236 C96 190 96 170 130 168" fill="none" stroke="#3C5644" stroke-width="10" stroke-linecap="round"/>
+          <path d="M170 236 C170 190 170 168 130 168" fill="none" stroke="#3C5644" stroke-width="10" stroke-linecap="round"/>
+        </g>
+        <!-- dog silhouette running -->
+        <g transform="translate(190,150)">
+          <ellipse cx="40" cy="55" rx="46" ry="24" fill="#26362B"/>
+          <ellipse cx="8" cy="60" rx="20" ry="16" fill="#FBF4E9"/>
+          <circle cx="72" cy="30" r="19" fill="#26362B"/>
+          <path d="M60 16 L52 -2 L68 8 Z" fill="#26362B"/>
+          <path d="M84 16 L96 0 L86 12 Z" fill="#26362B"/>
+          <ellipse cx="80" cy="34" rx="5" ry="4" fill="#FBF4E9"/>
+          <circle cx="82" cy="33" r="1.6" fill="#26362B"/>
+          <path d="M-6 40 C -22 30 -30 12 -22 -2" fill="none" stroke="#26362B" stroke-width="9" stroke-linecap="round"/>
+          <path d="M14 78 L2 100" stroke="#26362B" stroke-width="9" stroke-linecap="round"/>
+          <path d="M30 82 L38 106" stroke="#FBF4E9" stroke-width="9" stroke-linecap="round"/>
+          <path d="M56 80 L48 104" stroke="#26362B" stroke-width="9" stroke-linecap="round"/>
+          <path d="M70 78 L82 100" stroke="#FBF4E9" stroke-width="9" stroke-linecap="round"/>
+        </g>
+        <!-- paw prints trailing -->
+        <g fill="#DDA24E" opacity="0.7">
+          <circle cx="420" cy="120" r="5"/>
+          <circle cx="432" cy="108" r="3.4"/>
+          <circle cx="410" cy="106" r="3.4"/>
+          <circle cx="444" cy="120" r="3"/>
+        </g>
+        <g fill="#DDA24E" opacity="0.45">
+          <circle cx="450" cy="160" r="4.2"/>
+          <circle cx="460" cy="150" r="2.8"/>
+          <circle cx="441" cy="149" r="2.8"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="problem" id="problema">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow tag-center">El problema</span>
+      <h2>Cuando pasear no siempre es una opción</h2>
+      <p>Cualquier dueño de un perro activo lo conoce bien.</p>
+    </div>
+    <div class="grid-3">
+      <div class="p-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#DDA24E" stroke-width="1.8"><path d="M4 14a4 4 0 0 1 0-8 5.5 5.5 0 0 1 10.6-1.5A4.5 4.5 0 0 1 20 9a3.5 3.5 0 0 1-1 6.9H6"/><path d="M8 18l-1 3M12 18l-1 3M16 18l-1 3"/></svg>
+        <h3>Días de lluvia o calor extremo</h3>
+        <p>El clima no siempre acompaña, y el paseo diario se cancela justo cuando tu perro más lo necesita.</p>
+      </div>
+      <div class="p-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#DDA24E" stroke-width="1.8"><path d="M12 2v6M12 22v-6M4.9 4.9l4.2 4.2M14.9 14.9l4.2 4.2M2 12h6M16 12h6M4.9 19.1l4.2-4.2M14.9 9.1l4.2-4.2"/></svg>
+        <h3>Perros con demasiada energía</h3>
+        <p>Sin suficiente ejercicio aparecen la ansiedad, los destrozos en casa y el ladrido excesivo.</p>
+      </div>
+      <div class="p-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#DDA24E" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+        <h3>Rutinas sin tiempo de sobra</h3>
+        <p>Entre el trabajo y el día a día, no siempre queda tiempo para el paseo largo que tu perro pide.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="solution" id="solucion">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow tag-center">Cómo lo resolvemos</span>
+      <h2>Una cinta de correr pensada para perros reales</h2>
+      <p>Autopropulsada, robusta y silenciosa: tu perro hace el esfuerzo, tú solo ajustas la máquina.</p>
+    </div>
+    <div class="grid-3">
+      <div class="s-card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 12h20M6 8v8M18 8v8M9 8v3M15 8v3M9 13v3M15 13v3"/></svg></div>
+        <h3>Sin electricidad, sin cables</h3>
+        <p>Es autopropulsada: tu perro la mueve al caminar o correr. Se coloca en cualquier habitación sin buscar un enchufe cerca.</p>
+      </div>
+      <div class="s-card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12h16M4 12l4-4M4 12l4 4M20 12l-4-4M20 12l-4 4"/></svg></div>
+        <h3>Freno manual y parada suave</h3>
+        <p>Tú controlas la velocidad y la seguridad en todo momento, con un sistema de frenado pensado para detenerse sin sobresaltos.</p>
+      </div>
+      <div class="s-card">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M17.5 8.5a5 5 0 0 1 0 7"/><line x1="19" y1="4" x2="19" y2="4" stroke-opacity="0"/></svg></div>
+        <h3>Funcionamiento silencioso</h3>
+        <p>Diseñada para uso en interior sin molestar: puedes usarla mientras trabajas, ves la tele o los más pequeños duermen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trust" id="opiniones">
+  <div class="wrap">
+    <div class="trust-top">
+      <div class="trust-score">5.0</div>
+      <div class="stars" style="font-size:1.3rem;">★★★★★</div>
+      <div class="trust-count">Basado en 3 valoraciones verificadas en Amazon España</div>
+    </div>
+    <div class="review-grid">
+      <div class="review-card">
+        <span class="stars">★★★★★</span>
+        <h4>Buena calidad y fácil de usar</h4>
+        <p>"Nos gustó que funcione sin electricidad y que tenga freno manual. El tamaño es adecuado para perros medianos y grandes. En general estamos muy satisfechos con la compra."</p>
+        <div class="who"><b>Rodolfo De Almeida</b> · Reseña verificada <span class="verified">✓ Amazon</span></div>
+      </div>
+      <div class="review-card">
+        <span class="stars">★★★★★</span>
+        <h4>Muy útil para días de lluvia</h4>
+        <p>"La cinta es bastante sólida y silenciosa. Nuestro perro tardó un poco en acostumbrarse, pero ahora la usa sin problema. Perfecta para que haga ejercicio cuando no podemos salir."</p>
+        <div class="who"><b>Gaspard Dorado</b> · Reseña verificada <span class="verified">✓ Amazon</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how" id="como-funciona">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow tag-center">Cómo funciona</span>
+      <h2>Lista para usar en tres pasos</h2>
+    </div>
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="how-num">1</div>
+        <h3>Ajusta a su medida</h3>
+        <p>Regula la altura de la cadena y la posición del pórtico según el tamaño de tu perro.</p>
+        <svg class="how-arrow" viewBox="0 0 100 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M0 10h90M82 3l8 7-8 7"/></svg>
+      </div>
+      <div class="how-step">
+        <div class="how-num">2</div>
+        <h3>Ajusta inclinación y ritmo</h3>
+        <p>Hasta 10 cm de inclinación y velocidad controlada con el freno manual, sin motor ni cables.</p>
+        <svg class="how-arrow" viewBox="0 0 100 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M0 10h90M82 3l8 7-8 7"/></svg>
+      </div>
+      <div class="how-step">
+        <div class="how-num">3</div>
+        <h3>A correr</h3>
+        <p>Tu perro corre sobre la banda extraancha mientras controlas velocidad y distancia en el visor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="benefits" id="beneficios">
+  <div class="wrap benefits-grid">
+    <div class="benefits-art">
+      <svg viewBox="0 0 380 340" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="20" width="340" height="300" rx="28" fill="#F3E6D2"/>
+        <rect x="60" y="190" width="260" height="46" rx="23" fill="#3C5644"/>
+        <rect x="74" y="198" width="232" height="30" rx="15" fill="#26362B"/>
+        <circle cx="70" cy="236" r="17" fill="#26362B"/>
+        <circle cx="310" cy="236" r="17" fill="#26362B"/>
+        <circle cx="70" cy="236" r="5.5" fill="#DDA24E"/>
+        <circle cx="310" cy="236" r="5.5" fill="#DDA24E"/>
+        <rect x="266" y="90" width="8" height="90" rx="4" fill="#3C5644"/>
+        <rect x="300" y="98" width="8" height="82" rx="4" fill="#3C5644"/>
+        <rect x="262" y="86" width="52" height="8" rx="4" fill="#3C5644"/>
+        <path d="M288 96 v10 M284 108 h8 M284 116 h8 M288 120 v10" stroke="#DDA24E" stroke-width="2.6" stroke-linecap="round"/>
+        <g transform="translate(110,110)">
+          <ellipse cx="36" cy="50" rx="42" ry="22" fill="#26362B"/>
+          <ellipse cx="6" cy="54" rx="18" ry="14" fill="#FBF4E9"/>
+          <circle cx="66" cy="26" r="17" fill="#26362B"/>
+          <path d="M56 12 L48 -4 L64 6 Z" fill="#26362B"/>
+          <path d="M76 12 L88 -2 L78 8 Z" fill="#26362B"/>
+          <ellipse cx="74" cy="30" rx="4.5" ry="3.6" fill="#FBF4E9"/>
+          <circle cx="76" cy="29" r="1.4" fill="#26362B"/>
+          <path d="M-4 36 C -18 26 -26 10 -20 -2" fill="none" stroke="#26362B" stroke-width="8" stroke-linecap="round"/>
+        </g>
+        <g fill="#C7592A" opacity="0.55">
+          <circle cx="60" cy="270" r="4.5"/>
+          <circle cx="72" cy="260" r="3"/>
+          <circle cx="50" cy="258" r="3"/>
+        </g>
+      </svg>
+    </div>
+    <div class="benefits-copy">
+      <span class="eyebrow">Diseño pensado para durar</span>
+      <h2>Robusta por fuera, cómoda por dentro</h2>
+      <ul>
+        <li>
+          <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <div>
+            <h4>Acero al carbono + ABS, capacidad hasta 200 kg</h4>
+            <p>Una estructura pensada para aguantar el uso diario de perros grandes sin perder estabilidad.</p>
+          </div>
+        </li>
+        <li>
+          <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <div>
+            <h4>Ruedas de metal de alta resistencia</h4>
+            <p>Muévela de dentro a fuera de casa sin esfuerzo, incluso siendo un equipo robusto.</p>
+          </div>
+        </li>
+        <li>
+          <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <div>
+            <h4>Pensada para razas medianas y grandes</h4>
+            <p>Golden Retriever, Labrador, Husky, Border Collie y razas de tamaño similar corren cómodas sobre su banda extraancha.</p>
+          </div>
+        </li>
+      </ul>
+      <div class="spec-strip">
+        <span class="spec-chip">Banda 170 × 50 cm</span>
+        <span class="spec-chip">175 × 51 × 130 cm</span>
+        <span class="spec-chip">Inclinación hasta 10 cm</span>
+        <span class="spec-chip">Visor de velocidad y distancia</span>
+        <span class="spec-chip">Color negro</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow tag-center">Preguntas frecuentes</span>
+      <h2>Antes de decidir</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">¿Necesita electricidad o pilas para funcionar?<span class="plus">+</span></button>
+        <div class="faq-a"><p>No. Es 100% autopropulsada: tu perro la mueve al caminar o correr, y tú regulas la velocidad con el freno manual. No necesita enchufe ni baterías.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿Hace mucho ruido? Vivo en un piso.<span class="plus">+</span></button>
+        <div class="faq-a"><p>Está diseñada para funcionamiento silencioso y uso en interior. En las reseñas verificadas, los propios compradores la describen como "bastante sólida y silenciosa".</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿Y si mi perro no se acostumbra a usarla?<span class="plus">+</span></button>
+        <div class="faq-a"><p>Es normal que necesite unos días de adaptación, como con cualquier equipo nuevo. Una reseña verificada lo resume bien: "nuestro perro tardó un poco en acostumbrarse, pero ahora la usa sin problema."</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="comprar">
+  <div class="wrap">
+    <div class="cta-final">
+      <h2>Que la lluvia no le robe la energía a tu perro</h2>
+      <p class="sub">Consulta precio y disponibilidad actual directamente en Amazon.</p>
+      <a href="https://amzn.to/460T2lH" target="_blank" rel="noopener sponsored" class="btn btn-primary">
+        Ver precio y comprar en Amazon
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+      </a>
+      <p class="friction">Compra protegida por Amazon · Pago único, sin cuotas ni suscripción</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div class="logo" style="font-size:1.05rem;">
+      <svg viewBox="0 0 40 40" width="26" height="26" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="20" fill="#C7592A"/>
+        <ellipse cx="20" cy="25" rx="8" ry="6.5" fill="#FBF4E9"/>
+        <ellipse cx="12.5" cy="15" rx="3.2" ry="4" fill="#FBF4E9"/>
+        <ellipse cx="27.5" cy="15" rx="3.2" ry="4" fill="#FBF4E9"/>
+        <ellipse cx="16.5" cy="10.5" rx="2.6" ry="3.4" fill="#FBF4E9"/>
+        <ellipse cx="23.5" cy="10.5" rx="2.6" ry="3.4" fill="#FBF4E9"/>
+      </svg>
+      PatasActivas
+    </div>
+    <nav class="footer-links">
+      <a href="#">Privacidad</a>
+      <a href="#">Términos</a>
+      <a href="mailto:hola@patasactivas.example">Contacto</a>
+    </nav>
+  </div>
+  <div class="paw-divider">
+    <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="15" r="4"/><circle cx="5" cy="9" r="2.2"/><circle cx="19" cy="9" r="2.2"/><circle cx="8" cy="4" r="1.8"/><circle cx="16" cy="4" r="1.8"/></svg>
+  </div>
+  <p class="disclosure">Como afiliados de Amazon, PatasActivas obtiene una comisión por las compras que cumplan los requisitos aplicables, sin coste adicional para ti. Precios y disponibilidad sujetos a cambios en Amazon.</p>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.closest('.faq-item');
+      var answer = item.querySelector('.faq-a');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(openItem){
+        openItem.classList.remove('open');
+        openItem.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if(!isOpen){
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
