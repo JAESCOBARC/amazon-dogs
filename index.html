@@ -110,6 +110,10 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     html, body {
       width: 100%;
       background: #C45A18;
@@ -578,6 +582,41 @@
     .footer-links a { color: inherit; text-decoration: none; }
     .footer-links a:hover { color: var(--orange); }
     .disclosure { max-width: 1120px; margin: 22px auto 0; padding: 0 24px; font-size: 11.5px; color: var(--label); line-height: 1.6; }
+
+    /* Sticky CTA bar */
+    .sticky-cta {
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
+      background: rgba(10, 8, 7, 0.94);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(251, 219, 175, 0.14);
+      padding: 12px 20px;
+      transform: translateY(120%);
+      pointer-events: none;
+      transition: transform 0.3s ease;
+    }
+    .sticky-cta.visible { transform: translateY(0); pointer-events: auto; }
+    .sticky-cta-inner {
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      max-width: 1120px; margin: 0 auto;
+    }
+    .sticky-cta-id { display: flex; align-items: center; gap: 10px; min-width: 0; }
+    .sticky-cta-thumb {
+      width: 36px; height: 36px; border-radius: 8px; flex-shrink: 0;
+      background-size: cover; background-position: center;
+      border: 1px solid rgba(251, 219, 175, 0.2);
+    }
+    .sticky-cta-text { display: flex; flex-direction: column; line-height: 1.3; min-width: 0; }
+    .sticky-cta-text strong { font-size: 12.5px; color: var(--cream); font-weight: 400; }
+    .sticky-cta-text span { font-size: 11px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .sticky-cta-btn { padding: 10px 20px; font-size: 13px; flex-shrink: 0; }
+    @media (max-width: 480px) {
+      .sticky-cta-text span { display: none; }
+      .sticky-cta { padding: 10px 14px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
   </style>
 </head>
 <body>
@@ -622,13 +661,13 @@
           </div>
 
           <div class="icon-row fade-up-reveal" data-delay="0.75">
-            <button class="icon-btn" aria-label="Autopropulsada, sin electricidad">
+            <a class="icon-btn" href="#feat-sin-electricidad" aria-label="Ver detalle: autopropulsada, sin electricidad">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2">
                 <path d="M8 1.4L13.8 4.7V11.3L8 14.6L2.2 11.3V4.7L8 1.4Z" />
                 <circle cx="8" cy="8" r="1.35" fill="currentColor" />
               </svg>
-            </button>
-            <button class="icon-btn" aria-label="Freno manual">
+            </a>
+            <a class="icon-btn" href="#feat-freno-manual" aria-label="Ver detalle: freno manual">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
                 <path d="M2 5.2V2h3.2" />
                 <path d="M14 5.2V2h-3.2" />
@@ -636,12 +675,12 @@
                 <path d="M14 10.8V14h-3.2" />
                 <rect x="5.2" y="5.2" width="5.6" height="5.6" />
               </svg>
-            </button>
-            <button class="icon-btn" aria-label="Funcionamiento silencioso">
+            </a>
+            <a class="icon-btn" href="#feat-silencioso" aria-label="Ver detalle: funcionamiento silencioso">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round">
                 <path d="M9.2 1.6L4 9.1h3.5L6.8 14.4 12 6.9H8.5L9.2 1.6Z" />
               </svg>
-            </button>
+            </a>
           </div>
         </div>
       </div>
@@ -700,17 +739,17 @@
           <p>Autopropulsada, robusta y silenciosa: tu perro hace el esfuerzo, tú solo ajustas la máquina.</p>
         </div>
         <div class="grid-3">
-          <div class="panel fade-up-reveal" data-delay="0.05">
+          <div class="panel fade-up-reveal" data-delay="0.05" id="feat-sin-electricidad">
             <div class="picon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 12h20M6 8v8M18 8v8M9 8v3M15 8v3M9 13v3M15 13v3"/></svg></div>
             <h3>Sin electricidad, sin cables</h3>
             <p>Es autopropulsada: tu perro la mueve al caminar o correr. Se coloca en cualquier habitación sin buscar un enchufe cerca.</p>
           </div>
-          <div class="panel fade-up-reveal" data-delay="0.12">
+          <div class="panel fade-up-reveal" data-delay="0.12" id="feat-freno-manual">
             <div class="picon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12h16M4 12l4-4M4 12l4 4M20 12l-4-4M20 12l-4 4"/></svg></div>
             <h3>Freno manual y parada suave</h3>
             <p>Tú controlas la velocidad y la seguridad en todo momento, con un sistema de frenado pensado para detenerse sin sobresaltos.</p>
           </div>
-          <div class="panel fade-up-reveal" data-delay="0.19">
+          <div class="panel fade-up-reveal" data-delay="0.19" id="feat-silencioso">
             <div class="picon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M17.5 8.5a5 5 0 0 1 0 7"/></svg></div>
             <h3>Funcionamiento silencioso</h3>
             <p>Diseñada para uso en interior sin molestar: puedes usarla mientras trabajas, ves la tele o los más pequeños duermen.</p>
@@ -859,14 +898,28 @@
           PatasActivas
         </div>
         <nav class="footer-links">
-          <a href="#">Privacidad</a>
-          <a href="#">Términos</a>
           <a href="mailto:hola@patasactivas.example">Contacto</a>
         </nav>
       </div>
       <p class="disclosure wrap">Como afiliados de Amazon, PatasActivas obtiene una comisión por las compras que cumplan los requisitos aplicables, sin coste adicional para ti. Precios y disponibilidad sujetos a cambios en Amazon.</p>
     </footer>
 
+  </div>
+
+  <div class="sticky-cta" id="stickyCta">
+    <div class="sticky-cta-inner">
+      <div class="sticky-cta-id">
+        <div class="sticky-cta-thumb" style="background-image: url('product-thumb.jpg');"></div>
+        <div class="sticky-cta-text">
+          <strong>Slatmill-01 · Cinta Autopropulsada</strong>
+          <span>★ 5.0 · Cinta de correr para perros grandes y medianos</span>
+        </div>
+      </div>
+      <a class="cta-btn-main sticky-cta-btn" href="https://amzn.to/460T2lH" target="_blank" rel="noopener sponsored">
+        Ver en Amazon
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+      </a>
+    </div>
   </div>
 
   <script>
@@ -976,6 +1029,29 @@
           el.style.animationDelay = `${delay}s`;
           el.classList.add('is-visible');
         });
+      }
+
+      const heroEl = document.querySelector('.hero');
+      const finalCtaEl = document.getElementById('comprar');
+      const stickyCta = document.getElementById('stickyCta');
+      let heroVisible = true;
+      let finalCtaVisible = false;
+
+      function updateStickyCta() {
+        if (!stickyCta) return;
+        stickyCta.classList.toggle('visible', !heroVisible && !finalCtaVisible);
+      }
+
+      if ('IntersectionObserver' in window && heroEl && finalCtaEl && stickyCta) {
+        new IntersectionObserver((entries) => {
+          entries.forEach((entry) => { heroVisible = entry.isIntersecting; });
+          updateStickyCta();
+        }, { threshold: 0 }).observe(heroEl);
+
+        new IntersectionObserver((entries) => {
+          entries.forEach((entry) => { finalCtaVisible = entry.isIntersecting; });
+          updateStickyCta();
+        }, { threshold: 0.2 }).observe(finalCtaEl);
       }
 
       document.querySelectorAll('.faq-q').forEach(function (btn) {
